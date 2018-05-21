@@ -1,0 +1,18 @@
+<h2>Setores</h2>
+<button type="submit" class="btn btn-primary" (click)="findSectors()" name="find">buscar Setores</button>
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title ">Setores Cadastrados</h4>
+          </div>
+          <mz-collection>
+              <a *ngFor="let setor of setores" mz-collection-link href="#!">{{setor.nome}}</a>
+          </mz-collection>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

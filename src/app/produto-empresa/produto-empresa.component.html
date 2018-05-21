@@ -1,0 +1,62 @@
+<h3 style="margin-bottom: 25px; text-align: center;">Cadastro de Produtos</h3>
+<div class="main-content" style="width:400px; margin:0px auto;">
+  <div class="container-fluid">
+    <div class="row">
+        <div style="margin:0px auto">
+            <img *ngIf="produto.imagem" class="img-rounded" src="{{produto.imagem}}" style="width: 200px; height:130px;"/>
+        </div>
+      <div class="col-md-12">
+        <div class="card col-md-12">
+          <div class="card-header card-header-danger">
+            <form>
+              <mz-input-container>
+                <input mz-input id="nome" name="nome" [label]="'Nome'" type="text" [(ngModel)]="produto.nome" disabled="{{disabledField}}"/>
+              </mz-input-container>
+              <mz-input-container>
+                <input mz-input id="codBarras" name="codBarras" [label]="'Código de barras'" type="text" #codBarras (blur)="findByEan(codBarras.value)" [(ngModel)]="produto.codigoBarras" disabled="{{disabledField}}"/>
+              </mz-input-container>
+              <mz-select-container>
+                <select mz-select id="options-select" [label]="'Setores'" [placeholder]="'Select'">
+                  <option *ngFor="let setor of setores" value="{{setor.id}}" class="left circle">{{setor.nome}}</option>
+                </select>
+              </mz-select-container>
+              <mz-input-container>
+                <input
+                  currencyMask
+                  mz-input
+                  id="preco"
+                  name="preco"
+                  [label]="'Preço'"
+                  type="text"
+                  [(ngModel)]="produtoEmpresa.preco"
+                />
+              </mz-input-container>
+              <mz-input-container>
+                <input
+                currencyMask
+                mz-input
+                id="promo"
+                name="promo"
+                [label]="'Preço promocional'"
+                type="text"
+                [(ngModel)]="produtoEmpresa.precoPromocional"
+              />
+              </mz-input-container>
+                <mz-checkbox-container>
+                  <input mz-checkbox [(ngModel)]="produtoEmpresa.ativo" [label]="'Ativo'" id="'ativo'" name="'ativo'" type="checkbox">
+                </mz-checkbox-container>
+                <div>
+                  <button type="submit" class="btn" (click)="register()" name="register">Register</button>
+                  <button class="btn" (click)="cleanForm()" name="clean">Clean</button>
+
+                </div>
+              <br>
+              <br>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
